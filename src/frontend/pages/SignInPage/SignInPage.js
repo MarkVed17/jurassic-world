@@ -1,11 +1,60 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { signin } from "../../features";
+import {
+  JURASSIC_WORLD_AUTH_TOKEN,
+  JURASSIC_WORLD_USER_INFO,
+} from "../../constants";
+import toast from "react-hot-toast";
 
 const SignInPage = () => {
+  const [user, setUser] = useState({ username: "", password: "" });
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  let from = location.state?.from?.pathname || "/";
+
+  const signInHandler = async (user) => {
+    const response = await dispatch(signin(user));
+    try {
+      localStorage.setItem(
+        JURASSIC_WORLD_AUTH_TOKEN,
+        response.payload.encodedToken
+      );
+      localStorage.setItem(
+        JURASSIC_WORLD_USER_INFO,
+        JSON.stringify(response.payload.foundUser)
+      );
+      navigate(from, { replace: true });
+      toast.success("Logged in Successfully!", {
+        style: {
+          background: "#22c55e",
+          color: "#FFFFFF",
+        },
+      });
+    } catch (error) {
+      toast.error("Something went wrong!", {
+        style: {
+          background: "#ef4444",
+          color: "#FFFFFF",
+        },
+      });
+    }
+  };
+
   return (
     <div className="main-content dark:bg-gray-800">
       <div className="m-auto p-4 w-fit bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 sm:w-96 lg:p-8 dark:bg-gray-800 dark:border-gray-700">
-        <form className="space-y-6" action="#">
+        <form
+          className="space-y-6"
+          onSubmit={(e) => {
+            e.preventDefault();
+            signInHandler(user);
+          }}
+        >
           <h5 className="text-xl font-medium text-gray-900 dark:text-white">
             Sign In
           </h5>
@@ -23,6 +72,8 @@ const SignInPage = () => {
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg outline-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
               placeholder="e.g. johndoe"
               required
+              value={user.username}
+              onChange={(e) => setUser({ ...user, username: e.target.value })}
             />
           </div>
           <div>
@@ -38,7 +89,10 @@ const SignInPage = () => {
               id="password"
               placeholder="••••••••"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg outline-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+              minLength="8"
               required
+              value={user.password}
+              onChange={(e) => setUser({ ...user, password: e.target.value })}
             />
           </div>
           <div className="flex items-start">
@@ -73,6 +127,17 @@ const SignInPage = () => {
           <button
             type="button"
             className="w-full text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-white dark:hover:text-white dark:hover:bg-blue-800 dark:focus:ring-blue-800"
+            onClick={(e) => {
+              e.preventDefault();
+              setUser({
+                username: "vedantlahane",
+                password: "vedant123",
+              });
+              signInHandler({
+                username: "vedantlahane",
+                password: "vedant123",
+              });
+            }}
           >
             Login as Guest
           </button>
