@@ -60,7 +60,7 @@ const ProfileSection = () => {
       </div>
       <button
         type="button"
-        className="self-start text-xs text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full px-2.5 py-1.5 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 sm:text-sm sm:px-5 sm:py-2.5"
+        className="self-start text-xs text-white bg-gray-500 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full px-2.5 py-1.5 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 sm:text-sm sm:px-5 sm:py-2.5"
       >
         Edit
       </button>
