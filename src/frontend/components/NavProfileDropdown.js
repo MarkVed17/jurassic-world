@@ -1,30 +1,60 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { signout } from "../features";
+import {
+  JURASSIC_WORLD_AUTH_TOKEN,
+  JURASSIC_WORLD_USER_INFO,
+} from "../constants";
+import toast from "react-hot-toast";
 
-const NavProfileDropdown = () => {
+const NavProfileDropdown = ({ setProfileDropdownMenu }) => {
+  const { isAuth, user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const signOutHandler = () => {
+    dispatch(signout());
+    localStorage.removeItem(JURASSIC_WORLD_AUTH_TOKEN);
+    localStorage.removeItem(JURASSIC_WORLD_USER_INFO);
+    navigate("/");
+  };
   return (
-    <div className="absolute top-[50px] right-0 z-50 my-4 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
-      <div className="z-50 py-3 px-4">
-        <span className="block text-sm text-gray-900 dark:text-white">
-          Vedant Lahane
-        </span>
-        <span className="block text-sm font-medium text-gray-500 truncate dark:text-gray-400">
-          @username
-        </span>
-      </div>
+    <div className="absolute top-[50px] right-0 z-50 my-4 text-base list-none bg-white rounded border divide-y divide-gray-200 shadow dark:bg-gray-700 dark:divide-gray-600 dark:border-gray-600">
+      {isAuth && (
+        <div className="z-50 py-3 px-4 text-center">
+          <span className="block text-sm text-gray-900 dark:text-white">
+            {user.firstName} {user.lastName}
+          </span>
+          <span className="block text-sm font-medium text-gray-500 truncate dark:text-gray-400">
+            @{user.username}
+          </span>
+        </div>
+      )}
       <ul className="py-1">
         <li>
           <Link
             to="/profile"
             className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+            onClick={() => setProfileDropdownMenu(false)}
           >
             Profile
           </Link>
         </li>
         <li>
           <Link
-            to=""
+            to="/"
             className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+            onClick={() => {
+              signOutHandler();
+              setProfileDropdownMenu(false);
+              toast.success("Logged out!", {
+                style: {
+                  background: "#22c55e",
+                  color: "#FFFFFF",
+                },
+              });
+            }}
           >
             Logout
           </Link>

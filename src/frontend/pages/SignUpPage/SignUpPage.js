@@ -1,11 +1,65 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { signup } from "../../features";
+import {
+  JURASSIC_WORLD_AUTH_TOKEN,
+  JURASSIC_WORLD_USER_INFO,
+} from "../../constants";
+import toast from "react-hot-toast";
 
 const SignUpPage = () => {
+  const [user, setUser] = useState({
+    firstName: "",
+    lastName: "",
+    username: "",
+    password: "",
+  });
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  let from = location?.state?.from?.pathname || "/";
+
+  const signUpHandler = async (user) => {
+    try {
+      const response = await dispatch(signup(user));
+      localStorage.setItem(
+        JURASSIC_WORLD_AUTH_TOKEN,
+        response.payload.encodedToken
+      );
+      localStorage.setItem(
+        JURASSIC_WORLD_USER_INFO,
+        JSON.stringify(response.payload.createdUser)
+      );
+      navigate(from, { replace: true });
+      toast.success("Signed up Successfully!", {
+        style: {
+          background: "#22c55e",
+          color: "#FFFFFF",
+        },
+      });
+    } catch (error) {
+      toast.error("Something went wrong!", {
+        style: {
+          background: "#ef4444",
+          color: "#FFFFFF",
+        },
+      });
+    }
+  };
+
   return (
     <div className="main-content dark:bg-gray-800">
       <div className="m-auto p-4 w-fit bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 sm:w-96 lg:p-8 dark:bg-gray-800 dark:border-gray-700">
-        <form className="space-y-6" action="#">
+        <form
+          className="space-y-6"
+          onSubmit={(e) => {
+            e.preventDefault();
+            signUpHandler(user);
+          }}
+        >
           <h5 className="text-xl font-medium text-gray-900 dark:text-white">
             Sign Up
           </h5>
@@ -24,6 +78,10 @@ const SignUpPage = () => {
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg outline-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                 placeholder="e.g. John"
                 required
+                value={user.firstName}
+                onChange={(e) =>
+                  setUser({ ...user, firstName: e.target.value })
+                }
               />
             </div>
             <div>
@@ -40,6 +98,8 @@ const SignUpPage = () => {
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg outline-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                 placeholder="e.g. Doe"
                 required
+                value={user.lastName}
+                onChange={(e) => setUser({ ...user, lastName: e.target.value })}
               />
             </div>
           </div>
@@ -56,7 +116,10 @@ const SignUpPage = () => {
               id="username"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg outline-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
               placeholder="e.g. johndoe"
+              minLength="8"
               required
+              value={user.username}
+              onChange={(e) => setUser({ ...user, username: e.target.value })}
             />
           </div>
           <div>
@@ -73,6 +136,8 @@ const SignUpPage = () => {
               placeholder="••••••••"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg outline-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
               required
+              value={user.password}
+              onChange={(e) => setUser({ ...user, password: e.target.value })}
             />
           </div>
           <div className="flex items-start">

@@ -9,17 +9,22 @@ import {
   SignUpPage,
   SinglePostPage,
 } from "../../pages";
+import Mockman from "mockman-js";
+import { PrivateRoute } from "../../components";
 
 const Main = () => {
   return (
     <Routes>
-      <Route path="/" element={<FeedPage />} />
-      <Route path="/explore" element={<ExplorePage />} />
-      <Route path="/bookmarks" element={<BookmarksPage />} />
-      <Route path="/profile" element={<ProfilePage />} />
+      <Route element={<PrivateRoute />}>
+        <Route path="/" element={<FeedPage />} />
+        <Route path="/explore" element={<ExplorePage />} />
+        <Route path="/bookmarks" element={<BookmarksPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/post" element={<SinglePostPage />} />
+      </Route>
+      <Route path="/mockman" element={<Mockman />} />
       <Route path="/signin" element={<SignInPage />} />
       <Route path="/signup" element={<SignUpPage />} />
-      <Route path="/post" element={<SinglePostPage />} />
     </Routes>
   );
 };

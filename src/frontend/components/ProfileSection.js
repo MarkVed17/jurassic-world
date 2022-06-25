@@ -1,23 +1,26 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 const ProfileSection = () => {
+  const { user } = useSelector((state) => state.auth);
+
   return (
     <div className="flex p-2 gap-5">
       <img
         className="w-24 h-24 rounded-full sm:w-28 sm:h-28"
-        src="https://pbs.twimg.com/profile_images/1413581804653617157/Lb6QIsaO_400x400.jpg"
+        src={user.avatar}
         alt="User Avatar"
       />
       <div className="flex flex-col gap-2 font-medium dark:text-white">
         <div className="name-credentials">
           <p className="font-bold text-lg md:text-2xl lg:text-3xl ">
-            Vedant Lahane
+            {user.firstName} {user.lastName}
           </p>
-          <p className="text-sm text-gray-500 dark:text-gray-400">@username</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">
+            @{user.username}
+          </p>
         </div>
-        <p className="text-md font-normal lg:text-lg">
-          “Sometimes you gotta run before you can walk”
-        </p>
+        <p className="text-md font-normal lg:text-lg">{user.bio}</p>
         <div className="flex items-center gap-1">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -37,7 +40,7 @@ const ProfileSection = () => {
             rel="noreferrer"
             className="text-sm font-light text-sky-600 hover:underline"
           >
-            vedantlahane.netlify.app
+            {user.website}
           </a>
         </div>
         <div className="flex gap-4">
@@ -57,7 +60,7 @@ const ProfileSection = () => {
       </div>
       <button
         type="button"
-        className="self-start text-xs text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full px-2.5 py-1.5 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 sm:text-sm sm:px-5 sm:py-2.5"
+        className="self-start text-xs text-white bg-gray-500 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full px-2.5 py-1.5 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 sm:text-sm sm:px-5 sm:py-2.5"
       >
         Edit
       </button>

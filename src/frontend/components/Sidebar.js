@@ -9,7 +9,7 @@ const Sidebar = () => {
 
   return (
     <aside className="hidden w-64 h-full sticky top-20 lg:block">
-      <div className="overflow-y-auto py-4 px-3 bg-gray-50 dark:bg-gray-800">
+      <div className="overflow-y-auto py-4 px-3 dark:bg-gray-800">
         <ul className="space-y-2">
           <li>
             <NavLink to="/" className={linkStyle}>
