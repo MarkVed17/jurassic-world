@@ -7,6 +7,7 @@ const Header = () => {
   const [mobileNav, setMobileNav] = useState(false);
 
   const { isAuth, user } = useSelector((state) => state.auth);
+  const { firstName, lastName, avatarURL } = user;
 
   return (
     <>
@@ -48,7 +49,11 @@ const Header = () => {
               >
                 <img
                   className="w-10 h-10 rounded-full"
-                  src={user.avatar}
+                  src={
+                    avatarURL === null
+                      ? `https://ui-avatars.com/api/?name=${firstName}+${lastName}?format=svg`
+                      : avatarURL
+                  }
                   alt="avatar"
                 />
               </button>
