@@ -1,0 +1,1 @@
+export { giveFeedPosts } from "./giveFeedPosts";
