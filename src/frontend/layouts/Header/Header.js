@@ -7,7 +7,6 @@ const Header = () => {
   const [mobileNav, setMobileNav] = useState(false);
 
   const { isAuth, user } = useSelector((state) => state.auth);
-  const { firstName, lastName, avatarURL } = user;
 
   return (
     <>
@@ -50,9 +49,9 @@ const Header = () => {
                 <img
                   className="w-10 h-10 rounded-full"
                   src={
-                    avatarURL === null
-                      ? `https://ui-avatars.com/api/?name=${firstName}+${lastName}?format=svg`
-                      : avatarURL
+                    user.avatarURL === null
+                      ? `https://ui-avatars.com/api/?name=${isAuth?.user?.user.firstName}+${isAuth?.user?.user.lastName}?format=svg`
+                      : user.avatarURL
                   }
                   alt="avatar"
                 />
