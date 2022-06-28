@@ -23,8 +23,8 @@ const SignUpPage = () => {
   let from = location?.state?.from?.pathname || "/";
 
   const signUpHandler = async (user) => {
-    try {
-      const response = await dispatch(signup(user));
+    const response = await dispatch(signup(user));
+    if (response?.payload?.encodedToken) {
       localStorage.setItem(
         JURASSIC_WORLD_AUTH_TOKEN,
         response.payload.encodedToken
@@ -40,8 +40,8 @@ const SignUpPage = () => {
           color: "#FFFFFF",
         },
       });
-    } catch (error) {
-      toast.error("Something went wrong!", {
+    } else {
+      toast.error(`${response.payload}`, {
         style: {
           background: "#ef4444",
           color: "#FFFFFF",
