@@ -7,9 +7,10 @@ import { signInService, signUpService } from "../../services";
 
 const authInitialState = {
   token: localStorage.getItem(JURASSIC_WORLD_AUTH_TOKEN),
-  user: localStorage.getItem(JURASSIC_WORLD_USER_INFO),
+  user: JSON.parse(localStorage.getItem(JURASSIC_WORLD_USER_INFO)),
   loading: false,
-  isAuth: localStorage.getItem(JURASSIC_WORLD_AUTH_TOKEN) ? true : false,
+  isAuth:
+    localStorage.getItem(JURASSIC_WORLD_AUTH_TOKEN) !== null ? true : false,
 };
 
 const signin = createAsyncThunk(

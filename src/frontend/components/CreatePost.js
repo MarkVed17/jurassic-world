@@ -1,19 +1,25 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 const CreatePost = () => {
+  const { user } = useSelector((state) => state.auth);
+  const { firstName, lastName, username, avatarURL } = user;
+
   return (
-    <form>
+    <form className="pt-4 px-4">
       <div className="mb-4 py-4 px-4 w-full bg-white rounded border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
         <div className="flex items-center gap-3 bg-white dark:bg-gray-800">
           <img
             className="w-10 h-10 rounded-full"
-            src="https://pbs.twimg.com/profile_images/1413581804653617157/Lb6QIsaO_400x400.jpg"
-            alt="User Avatar"
+            src={avatarURL}
+            alt={firstName}
           />
           <div className="font-medium bg-white dark:bg-gray-800 dark:text-white">
-            <p>Vedant Lahane</p>
+            <p>
+              {firstName} {lastName}
+            </p>
             <p className="text-sm text-gray-500 dark:text-gray-400">
-              @username
+              @{username}
             </p>
           </div>
         </div>

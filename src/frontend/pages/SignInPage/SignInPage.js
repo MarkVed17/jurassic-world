@@ -19,7 +19,8 @@ const SignInPage = () => {
 
   const signInHandler = async (user) => {
     const response = await dispatch(signin(user));
-    try {
+
+    if (response?.payload?.encodedToken) {
       localStorage.setItem(
         JURASSIC_WORLD_AUTH_TOKEN,
         response.payload.encodedToken
@@ -35,8 +36,8 @@ const SignInPage = () => {
           color: "#FFFFFF",
         },
       });
-    } catch (error) {
-      toast.error("Something went wrong!", {
+    } else {
+      toast.error(`${response.payload}`, {
         style: {
           background: "#ef4444",
           color: "#FFFFFF",

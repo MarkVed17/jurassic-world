@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  Post,
   ProfileSection,
   Sidebar,
   SuggestedUsersCard,
@@ -16,11 +15,11 @@ const ProfilePage = () => {
       <div className="flex flex-col grow max-w-2xl gap-4 p-4">
         <ProfileSection />
         <div className="flex flex-col gap-3">
+          {/* <Post />
           <Post />
           <Post />
           <Post />
-          <Post />
-          <Post />
+          <Post /> */}
         </div>
       </div>
 

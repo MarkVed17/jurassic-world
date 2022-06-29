@@ -8,3 +8,4 @@ export { NavProfileDropdown } from "./NavProfileDropdown";
 export { CommentSection } from "./CommentSection";
 export { Comment } from "./Comment";
 export { PrivateRoute } from "./PrivateRoute";
+export { PostsSection } from "./PostsSection";
