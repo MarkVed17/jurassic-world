@@ -19,8 +19,8 @@ const Main = () => {
         <Route path="/" element={<FeedPage />} />
         <Route path="/explore" element={<ExplorePage />} />
         <Route path="/bookmarks" element={<BookmarksPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/post" element={<SinglePostPage />} />
+        <Route path="/profile/:username" element={<ProfilePage />} />
+        <Route path="/post/:postId" element={<SinglePostPage />} />
       </Route>
       <Route path="/mockman" element={<Mockman />} />
       <Route path="/signin" element={<SignInPage />} />
