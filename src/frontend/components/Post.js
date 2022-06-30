@@ -1,10 +1,17 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { likePost, dislikePost } from "../features";
+import {
+  likePost,
+  dislikePost,
+  addToBookmarkPosts,
+  removeFromBookmarkPosts,
+} from "../features";
 
 const Post = ({ post }) => {
   const { user, token } = useSelector((state) => state.auth);
+  const { data: bookmarks } = useSelector((state) => state.bookmarks);
+
   const {
     _id,
     firstName,
@@ -27,6 +34,16 @@ const Post = ({ post }) => {
   const dislikeHandler = (e) => {
     e.stopPropagation();
     dispatch(dislikePost({ postId: _id, token }));
+  };
+
+  const addToBookmarksHandler = (e) => {
+    e.stopPropagation();
+    dispatch(addToBookmarkPosts({ postId: _id, token }));
+  };
+
+  const removeFromBookmarksHandler = (e) => {
+    e.stopPropagation();
+    dispatch(removeFromBookmarkPosts({ postId: _id, token }));
   };
 
   return (
@@ -161,22 +178,48 @@ const Post = ({ post }) => {
             </svg>
             <p className="font-light text-inherit">{comments.length}</p>
           </button>
-          <button className="flex gap-1 text-black dark:text-white">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 hover:stroke-yellow-600"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={1}
+
+          {bookmarks.find((post) => post._id === _id) ? (
+            <button
+              className="flex gap-1 text-black dark:text-white"
+              onClick={removeFromBookmarksHandler}
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
-              />
-            </svg>
-          </button>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6 fill-yellow-600"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={0}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
+                />
+              </svg>
+            </button>
+          ) : (
+            <button
+              className="flex gap-1 text-black dark:text-white"
+              onClick={addToBookmarksHandler}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6 hover:stroke-yellow-600"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={1}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
+                />
+              </svg>
+            </button>
+          )}
         </div>
       </div>
     </div>
