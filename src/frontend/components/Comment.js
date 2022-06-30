@@ -9,7 +9,11 @@ const Comment = ({ postId, comment }) => {
     <div className="flex items-center gap-3 py-4 px-4 rounded bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
       <img
         className="w-10 h-10 rounded-full self-start dark:bg-gray-700 hover:cursor-pointer"
-        src={avatarURL}
+        src={
+          avatarURL === null
+            ? `https://ui-avatars.com/api/?name=${firstName}+${lastName}?format=svg`
+            : avatarURL
+        }
         alt="User Avatar"
         onClick={() => {
           navigate(`/profile/${username}`);
