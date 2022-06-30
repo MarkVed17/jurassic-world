@@ -6,7 +6,6 @@ const likePostService = async (postId, token) => {
     {},
     { headers: { authorization: token } }
   );
-  console.log(response);
   return response;
 };
 

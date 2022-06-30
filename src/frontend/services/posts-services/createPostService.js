@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const createPostService = async (postDetails, token) => {
+const createPostService = async (postData, token) => {
   try {
     const response = await axios.post(
       "/api/posts",
-      { postDetails },
+      { postData },
       {
         headers: { authorization: token },
       }

@@ -9,7 +9,10 @@ import {
 import toast from "react-hot-toast";
 
 const NavProfileDropdown = ({ setProfileDropdownMenu }) => {
-  const { isAuth, user } = useSelector((state) => state.auth);
+  const {
+    isAuth,
+    user: { firstName, lastName, username },
+  } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -24,19 +27,22 @@ const NavProfileDropdown = ({ setProfileDropdownMenu }) => {
       {isAuth && (
         <div className="z-50 py-3 px-4 text-center">
           <span className="block text-sm text-gray-900 dark:text-white">
-            {user.firstName} {user.lastName}
+            {firstName} {lastName}
           </span>
           <span className="block text-sm font-medium text-gray-500 truncate dark:text-gray-400">
-            @{user.username}
+            @{username}
           </span>
         </div>
       )}
       <ul className="py-1">
         <li>
           <Link
-            to="/profile"
+            to={`/profile/${username}`}
             className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-            onClick={() => setProfileDropdownMenu(false)}
+            onClick={() => {
+              navigate(`profile/${username}`);
+              setProfileDropdownMenu(false);
+            }}
           >
             Profile
           </Link>

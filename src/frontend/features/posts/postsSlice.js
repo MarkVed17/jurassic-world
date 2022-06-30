@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import {
+  createPostService,
   dislikePostService,
   getAllPostsService,
   likePostService,
@@ -8,6 +9,7 @@ import {
 const postsInitialState = {
   data: [],
   loading: false,
+  error: "",
 };
 
 const getAllPosts = createAsyncThunk(
@@ -15,6 +17,18 @@ const getAllPosts = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const { data } = await getAllPostsService();
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.response.data.errors[0]);
+    }
+  }
+);
+
+const createPost = createAsyncThunk(
+  "posts/createPost",
+  async ({ postData, token }, { rejectWithValue }) => {
+    try {
+      const { data } = await createPostService(postData, token);
       return data;
     } catch (error) {
       return rejectWithValue(error.response.data.errors[0]);
@@ -60,6 +74,12 @@ const postsSlice = createSlice({
     [getAllPosts.rejected]: (state) => {
       state.loading = false;
     },
+    [createPost.fulfilled]: (state, action) => {
+      state.data = action.payload.posts;
+    },
+    [createPost.rejected]: (state, action) => {
+      state.error = action.payload;
+    },
     [likePost.fulfilled]: (state, action) => {
       state.data = action.payload.posts;
     },
@@ -71,4 +91,10 @@ const postsSlice = createSlice({
 
 const postsReducer = postsSlice.reducer;
 
-export { getAllPosts, likePost, dislikePost, postsReducer };
+export {
+  getAllPosts,
+  createPost,
+  likePost,
+  dislikePost,
+  postsReducer,
+};

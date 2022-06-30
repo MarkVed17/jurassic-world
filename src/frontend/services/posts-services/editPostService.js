@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const editPostService = async (postId, postDetails, token) => {
+const editPostService = async (postId, postData, token) => {
   try {
     const response = await axios.delete(
       `/api/posts/edit/${postId}`,
-      { postDetails },
+      { postData },
       {
         headers: { authorization: token },
       }

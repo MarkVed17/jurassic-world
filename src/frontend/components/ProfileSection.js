@@ -1,8 +1,6 @@
 import React from "react";
-import { useSelector } from "react-redux";
 
-const ProfileSection = () => {
-  const { user } = useSelector((state) => state.auth);
+const ProfileSection = ({ profile }) => {
   const {
     firstName,
     lastName,
@@ -12,7 +10,7 @@ const ProfileSection = () => {
     website,
     followers,
     following,
-  } = user;
+  } = profile;
 
   return (
     <div className="flex p-2 gap-5">

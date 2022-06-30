@@ -50,7 +50,7 @@ const Header = () => {
                   className="w-10 h-10 rounded-full"
                   src={
                     user.avatarURL === null
-                      ? `https://ui-avatars.com/api/?name=${isAuth?.user?.user.firstName}+${isAuth?.user?.user.lastName}?format=svg`
+                      ? `https://ui-avatars.com/api/?name=${user?.firstName}+${user?.lastName}?format=svg`
                       : user.avatarURL
                   }
                   alt="avatar"
