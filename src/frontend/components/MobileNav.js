@@ -1,7 +1,12 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 
 const MobileNav = ({ setMobileNav }) => {
+  const {
+    user: { username },
+  } = useSelector((state) => state.auth);
+
   const linkStyle = ({ isActive }) =>
     isActive
       ? "flex items-center p-2 text-lg font-normal text-gray-900 rounded-lg dark:text-white bg-gray-100 dark:bg-gray-700"
@@ -88,7 +93,7 @@ const MobileNav = ({ setMobileNav }) => {
             </NavLink>
           </li>
           <li onClick={() => setMobileNav(false)}>
-            <NavLink to="/profile" className={linkStyle}>
+            <NavLink to={`/profile/${username}`} className={linkStyle}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-8 w-8"
