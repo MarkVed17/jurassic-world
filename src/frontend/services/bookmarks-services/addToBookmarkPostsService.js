@@ -1,7 +1,6 @@
 import axios from "axios";
 
 const addToBookmarkPostsService = async (postId, token) => {
-  console.log("here");
   const response = await axios.post(
     `/api/users/bookmark/${postId}`,
     {},
@@ -11,7 +10,6 @@ const addToBookmarkPostsService = async (postId, token) => {
       },
     }
   );
-  console.log(response);
   return response;
 };
 
