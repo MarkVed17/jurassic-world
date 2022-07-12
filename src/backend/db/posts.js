@@ -1,5 +1,4 @@
 import { v4 as uuid } from "uuid";
-import { formatDate } from "../utils/authUtils";
 
 /**
  * Posts can be added here.
@@ -94,8 +93,8 @@ export const posts = [
     avatarURL:
       "https://pbs.twimg.com/profile_images/1413581804653617157/Lb6QIsaO_400x400.jpg",
     username: "vedantlahane",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
+    createdAt: new Date("May 24, 2022"),
+    updatedAt: new Date("May 24, 2022"),
     comments: [
       {
         _id: uuid(),
@@ -305,8 +304,8 @@ export const posts = [
     avatarURL:
       "https://pbs.twimg.com/profile_images/1413581804653617157/Lb6QIsaO_400x400.jpg",
     username: "vedantlahane",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
+    createdAt: new Date("May 28, 2022"),
+    updatedAt: new Date("May 28, 2022"),
     comments: [
       {
         _id: uuid(),
@@ -459,8 +458,8 @@ export const posts = [
     avatarURL:
       "https://pbs.twimg.com/profile_images/906797609876156417/Ok4QhSR0_400x400.jpg",
     username: "Dr.Grant",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
+    createdAt: new Date("May 30, 2022"),
+    updatedAt: new Date("May 30, 2022"),
     comments: [
       {
         _id: uuid(),
@@ -495,7 +494,7 @@ export const posts = [
   {
     _id: uuid(),
     content:
-      "God creates dinosaur. God destroys dinosaur. God creates man. Man destroys God. Man creates dinosaur.",
+      "God creates dinosaurs. God destroys dinosaurs. God creates man. Man destroys God. Man creates dinosaurs.",
     likes: {
       likeCount: 3,
       likedBy: [
@@ -531,8 +530,8 @@ export const posts = [
     avatarURL:
       "https://pbs.twimg.com/profile_images/1281764003442720775/Th9ohDVK_400x400.jpg",
     username: "malcolm",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
+    createdAt: new Date("June 1, 2022"),
+    updatedAt: new Date("June 1, 2022"),
     comments: [
       {
         _id: uuid(),
@@ -554,7 +553,7 @@ export const posts = [
         username: "ellie",
         avatarURL:
           "https://pbs.twimg.com/profile_images/3482028691/bffa3c992bade83644dfdc6882d71685_400x400.jpeg",
-        text: "Dinosaur eats man. Woman inherits the earth.",
+        text: "Dinosaurs eat man. Woman inherits the earth.",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -578,8 +577,8 @@ export const posts = [
     avatarURL:
       "https://pbs.twimg.com/profile_images/1028888448437026816/KSqyz1DU_400x400.jpg",
     username: "iamclaire",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
+    createdAt: new Date("May 27, 2022"),
+    updatedAt: new Date("May 27, 2022"),
     comments: [
       {
         _id: uuid(),
@@ -675,8 +674,8 @@ export const posts = [
     avatarURL:
       "https://pbs.twimg.com/profile_images/623457529893261313/U_gGfcfZ_400x400.jpg",
     username: "raptorguy",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
+    createdAt: new Date("May 30, 2022"),
+    updatedAt: new Date("May 30, 2022"),
     comments: [
       {
         _id: uuid(),
@@ -765,8 +764,8 @@ export const posts = [
     avatarURL:
       "https://pbs.twimg.com/profile_images/906797609876156417/Ok4QhSR0_400x400.jpg",
     username: "Dr.Grant",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
+    createdAt: new Date("June 4, 2022"),
+    updatedAt: new Date("June 4, 2022"),
     comments: [
       {
         _id: uuid(),
@@ -848,8 +847,8 @@ export const posts = [
     avatarURL:
       "https://pbs.twimg.com/profile_images/1491820732418035718/MqsUQxai_400x400.jpg",
     username: "inGeneer",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
+    createdAt: new Date("June 2, 2022"),
+    updatedAt: new Date("June 2, 2022"),
     comments: [
       {
         _id: uuid(),
@@ -936,8 +935,8 @@ export const posts = [
     avatarURL:
       "https://pbs.twimg.com/profile_images/804113657613402115/qCpyaK63_400x400.jpg",
     username: "founder",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
+    createdAt: new Date("June 5, 2022"),
+    updatedAt: new Date("June 5, 2022"),
     comments: [
       {
         _id: uuid(),
@@ -978,8 +977,8 @@ export const posts = [
     avatarURL:
       "https://pbs.twimg.com/profile_images/1028888448437026816/KSqyz1DU_400x400.jpg",
     username: "iamclaire",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
+    createdAt: new Date("June 9, 2022"),
+    updatedAt: new Date("June 9, 2022"),
     comments: [
       {
         _id: uuid(),
@@ -1068,8 +1067,8 @@ export const posts = [
     avatarURL:
       "https://pbs.twimg.com/profile_images/1281764003442720775/Th9ohDVK_400x400.jpg",
     username: "malcolm",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
+    createdAt: new Date("June 5, 2022"),
+    updatedAt: new Date("June 5, 2022"),
     comments: [
       {
         _id: uuid(),
@@ -1140,8 +1139,8 @@ export const posts = [
     avatarURL:
       "https://pbs.twimg.com/profile_images/2251865948/image_400x400.jpg",
     username: "programmer",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
+    createdAt: new Date("June 7, 2022"),
+    updatedAt: new Date("June 7, 2022"),
     comments: [
       {
         _id: uuid(),
@@ -1203,8 +1202,8 @@ export const posts = [
     avatarURL:
       "https://i.pinimg.com/736x/84/fb/90/84fb90a4a3790c9413e1adc4ad36ae10.jpg",
     username: "iammaisie",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
+    createdAt: new Date("June 8, 2022"),
+    updatedAt: new Date("June 8, 2022"),
     comments: [
       {
         _id: uuid(),
@@ -1249,8 +1248,8 @@ export const posts = [
     avatarURL:
       "https://pbs.twimg.com/profile_images/1491820732418035718/MqsUQxai_400x400.jpg",
     username: "inGeneer",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
+    createdAt: new Date("June 15, 2022"),
+    updatedAt: new Date("June 15, 2022"),
     comments: [
       {
         _id: uuid(),
@@ -1325,8 +1324,8 @@ export const posts = [
     avatarURL:
       "https://pbs.twimg.com/profile_images/3482028691/bffa3c992bade83644dfdc6882d71685_400x400.jpeg",
     username: "ellie",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
+    createdAt: new Date("June 10, 2022"),
+    updatedAt: new Date("June 10, 2022"),
     comments: [
       {
         _id: uuid(),
@@ -1373,8 +1372,8 @@ export const posts = [
     avatarURL:
       "https://pbs.twimg.com/profile_images/804113657613402115/qCpyaK63_400x400.jpg",
     username: "founder",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
+    createdAt: new Date("June 12, 2022"),
+    updatedAt: new Date("June 12, 2022"),
     comments: [
       {
         _id: uuid(),
@@ -1445,8 +1444,8 @@ export const posts = [
     avatarURL:
       "https://pbs.twimg.com/profile_images/623457529893261313/U_gGfcfZ_400x400.jpg",
     username: "raptorguy",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
+    createdAt: new Date("June 13, 2022"),
+    updatedAt: new Date("June 13, 2022"),
     comments: [
       {
         _id: uuid(),
@@ -1529,8 +1528,8 @@ export const posts = [
     avatarURL:
       "https://pbs.twimg.com/profile_images/2251865948/image_400x400.jpg",
     username: "programmer",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
+    createdAt: new Date("June 20, 2022"),
+    updatedAt: new Date("June 20, 2022"),
     comments: [
       {
         _id: uuid(),
@@ -1629,8 +1628,8 @@ export const posts = [
     avatarURL:
       "https://i.pinimg.com/736x/84/fb/90/84fb90a4a3790c9413e1adc4ad36ae10.jpg",
     username: "iammaisie",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
+    createdAt: new Date("June 14, 2022"),
+    updatedAt: new Date("June 14, 2022"),
     comments: [
       {
         _id: uuid(),
@@ -1705,8 +1704,8 @@ export const posts = [
     avatarURL:
       "https://pbs.twimg.com/profile_images/3482028691/bffa3c992bade83644dfdc6882d71685_400x400.jpeg",
     username: "ellie",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
+    createdAt: new Date("June 30, 2022"),
+    updatedAt: new Date("June 30, 2022"),
     comments: [
       {
         _id: uuid(),
