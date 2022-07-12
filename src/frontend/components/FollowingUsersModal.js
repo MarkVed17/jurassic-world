@@ -46,6 +46,7 @@ const FollowingUsersModal = ({ setFollowingUsersModal, following }) => {
               alt="User Avatar"
               onClick={() => {
                 navigate(`/profile/${username}`);
+                setFollowingUsersModal(false);
               }}
             />
             <div className="flex gap-4">
