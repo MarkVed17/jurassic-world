@@ -2,7 +2,11 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import {
   addPostCommentService,
   createPostService,
+  deletePostCommentService,
+  deletePostService,
   dislikePostService,
+  editPostCommentService,
+  editPostService,
   getAllPostsService,
   likePostService,
 } from "../../services";
@@ -61,11 +65,64 @@ const dislikePost = createAsyncThunk(
   }
 );
 
+const editPost = createAsyncThunk(
+  "posts/editPost",
+  async ({ postId, postData, token }, { rejectWithValue }) => {
+    try {
+      const { data } = await editPostService(postId, postData, token);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.response.data.errors[0]);
+    }
+  }
+);
+
+const deletePost = createAsyncThunk(
+  "posts/deletePost",
+  async ({ postId, token }, { rejectWithValue }) => {
+    try {
+      const { data } = await deletePostService(postId, token);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.response.data.errors[0]);
+    }
+  }
+);
+
 const addPostComment = createAsyncThunk(
   "posts/addPostComment",
   async ({ postId, commentData, token }, { rejectWithValue }) => {
     try {
       const { data } = await addPostCommentService(postId, commentData, token);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.response.data.errors[0]);
+    }
+  }
+);
+
+const deletePostComment = createAsyncThunk(
+  "posts/deletePostComment",
+  async ({ postId, commentId, token }, { rejectWithValue }) => {
+    try {
+      const { data } = await deletePostCommentService(postId, commentId, token);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.response.data.errors[0]);
+    }
+  }
+);
+
+const editPostComment = createAsyncThunk(
+  "posts/editPostComment",
+  async ({ postId, commentId, commentData, token }, { rejectWithValue }) => {
+    try {
+      const { data } = await editPostCommentService(
+        postId,
+        commentId,
+        commentData,
+        token
+      );
       return data;
     } catch (error) {
       return rejectWithValue(error.response.data.errors[0]);
@@ -99,11 +156,23 @@ const postsSlice = createSlice({
     [dislikePost.fulfilled]: (state, action) => {
       state.data = action.payload.posts;
     },
+    [editPost.fulfilled]: (state, action) => {
+      state.data = action.payload.posts;
+    },
+    [deletePost.fulfilled]: (state, action) => {
+      state.data = action.payload.posts;
+    },
     [addPostComment.fulfilled]: (state, action) => {
       state.data = action.payload.posts;
     },
     [addPostComment.rejected]: (state, action) => {
       state.error = action.payload;
+    },
+    [deletePostComment.fulfilled]: (state, action) => {
+      state.data = action.payload.posts;
+    },
+    [editPostComment.fulfilled]: (state, action) => {
+      state.data = action.payload.posts;
     },
   },
 });
@@ -115,6 +184,10 @@ export {
   createPost,
   likePost,
   dislikePost,
+  editPost,
+  deletePost,
   addPostComment,
+  deletePostComment,
+  editPostComment,
   postsReducer,
 };
