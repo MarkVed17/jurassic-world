@@ -4,6 +4,7 @@ import {
   JURASSIC_WORLD_USER_INFO,
 } from "../../constants";
 import { signInService, signUpService } from "../../services";
+import { followUser, unfollowUser } from "../users";
 
 const authInitialState = {
   token: localStorage.getItem(JURASSIC_WORLD_AUTH_TOKEN),
@@ -75,6 +76,12 @@ const authSlice = createSlice({
     [signup.rejected]: (state) => {
       state.loading = false;
       state.isAuth = false;
+    },
+    [followUser.fulfilled]: (state, action) => {
+      state.user = action.payload.currentUser;
+    },
+    [unfollowUser.fulfilled]: (state, action) => {
+      state.user = action.payload.currentUser;
     },
   },
 });

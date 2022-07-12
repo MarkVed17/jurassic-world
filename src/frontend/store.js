@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { authReducer, bookmarksReducer, postReducer, postsReducer, userReducer } from "./features";
+import { authReducer, bookmarksReducer, filtersReducer, postReducer, postsReducer, userReducer, usersReducer } from "./features";
 
 const store = configureStore({
   reducer: {
@@ -8,6 +8,8 @@ const store = configureStore({
     post: postReducer,
     user: userReducer,
     bookmarks: bookmarksReducer,
+    users: usersReducer,
+    filters: filtersReducer,
   },
 });
 

@@ -1,6 +1,17 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { giveSuggestedUsers } from "../utils";
+import { SuggestedUser } from "./SuggestedUser";
 
 const SuggestedUsersCard = () => {
+  const {
+    user: { username, following },
+  } = useSelector((state) => state.auth);
+  
+  const { data: users } = useSelector((state) => state.users);
+
+  const suggestedUsers = giveSuggestedUsers(users, username, following);
+
   return (
     <div className="hidden sticky top-20 p-4 max-w-md h-full bg-white rounded border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700 lg:block">
       <div className="flex justify-between items-center mb-4">
@@ -10,131 +21,9 @@ const SuggestedUsersCard = () => {
       </div>
       <div className="flow-root">
         <ul className="divide-y divide-gray-200 dark:divide-gray-700">
-          <li className="py-3 sm:py-4">
-            <div className="flex items-center space-x-4">
-              <div className="flex-shrink-0">
-                <img
-                  className="w-10 h-10 rounded-full"
-                  src="https://pbs.twimg.com/profile_images/1413581804653617157/Lb6QIsaO_400x400.jpg"
-                  alt="User Avatar"
-                />
-              </div>
-              <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
-                  Vedant Lahane
-                </p>
-                <p className="text-sm text-gray-500 truncate dark:text-gray-400">
-                  @username
-                </p>
-              </div>
-              <button
-                type="button"
-                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-              >
-                Follow
-              </button>
-            </div>
-          </li>
-          <li className="py-3 sm:py-4">
-            <div className="flex items-center space-x-4">
-              <div className="flex-shrink-0">
-                <img
-                  className="w-10 h-10 rounded-full"
-                  src="https://pbs.twimg.com/profile_images/1413581804653617157/Lb6QIsaO_400x400.jpg"
-                  alt="User Avatar"
-                />
-              </div>
-              <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
-                  Vedant Lahane
-                </p>
-                <p className="text-sm text-gray-500 truncate dark:text-gray-400">
-                  @username
-                </p>
-              </div>
-              <button
-                type="button"
-                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-              >
-                Follow
-              </button>
-            </div>
-          </li>
-          <li className="py-3 sm:py-4">
-            <div className="flex items-center space-x-4">
-              <div className="flex-shrink-0">
-                <img
-                  className="w-10 h-10 rounded-full"
-                  src="https://pbs.twimg.com/profile_images/1413581804653617157/Lb6QIsaO_400x400.jpg"
-                  alt="User Avatar"
-                />
-              </div>
-              <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
-                  Vedant Lahane
-                </p>
-                <p className="text-sm text-gray-500 truncate dark:text-gray-400">
-                  @username
-                </p>
-              </div>
-              <button
-                type="button"
-                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-              >
-                Follow
-              </button>
-            </div>
-          </li>
-          <li className="py-3 sm:py-4">
-            <div className="flex items-center space-x-4">
-              <div className="flex-shrink-0">
-                <img
-                  className="w-10 h-10 rounded-full"
-                  src="https://pbs.twimg.com/profile_images/1413581804653617157/Lb6QIsaO_400x400.jpg"
-                  alt="User Avatar"
-                />
-              </div>
-              <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
-                  Vedant Lahane
-                </p>
-                <p className="text-sm text-gray-500 truncate dark:text-gray-400">
-                  @username
-                </p>
-              </div>
-              <button
-                type="button"
-                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-              >
-                Follow
-              </button>
-            </div>
-          </li>
-          <li className="pt-3 pb-0 sm:pt-4">
-            <div className="flex items-center space-x-4">
-              <div className="flex-shrink-0">
-                <img
-                  className="w-10 h-10 rounded-full"
-                  src="https://pbs.twimg.com/profile_images/1413581804653617157/Lb6QIsaO_400x400.jpg"
-                  alt="User Avatar"
-                />
-              </div>
-              <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
-                  Vedant Lahane
-                </p>
-                <p className="text-sm text-gray-500 truncate dark:text-gray-400">
-                  @username
-                </p>
-              </div>
-              <button
-                type="button"
-                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-              >
-                Follow
-              </button>
-            </div>
-          </li>
+          {suggestedUsers.slice(0, 5).map((user) => (
+            <SuggestedUser key={user._id} user={user} />
+          ))}
         </ul>
       </div>
     </div>

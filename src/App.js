@@ -3,13 +3,14 @@ import { Footer, Header, Main } from "./frontend/layouts";
 import { Toaster } from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { getAllPosts } from "./frontend/features";
+import { getAllPosts, getAllUsers } from "./frontend/features";
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getAllPosts());
+    dispatch(getAllUsers());
   }, [dispatch]);
 
   return (

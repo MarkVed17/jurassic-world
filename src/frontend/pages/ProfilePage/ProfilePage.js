@@ -18,13 +18,15 @@ const ProfilePage = () => {
     posts: { data: posts },
   } = useSelector((state) => state.user);
 
+  const { data: users } = useSelector((state) => state.users);
+
   useEffect(() => {
     dispatch(getUser(username));
-  }, [dispatch, username]);
+  }, [dispatch, username, users]);
 
   useEffect(() => {
     dispatch(getAllUserPosts(username));
-  }, [dispatch, username]);
+  }, [dispatch, username, posts]);
 
   return (
     <div className="main-content justify-evenly dark:bg-gray-800">

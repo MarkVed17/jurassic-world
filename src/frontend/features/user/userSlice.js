@@ -1,5 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getAllUserPostsService, getUserService } from "../../services";
+import {
+  getAllUserPostsService,
+  getUserService,
+  editUserService,
+} from "../../services";
 
 const userInitialState = {
   profile: {
@@ -36,6 +40,18 @@ const getAllUserPosts = createAsyncThunk(
   }
 );
 
+const editUser = createAsyncThunk(
+  "user/editUser",
+  async ({ userData, token }, { rejectWithValue }) => {
+    try {
+      const { data } = await editUserService(userData, token);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.response.data.errors[0]);
+    }
+  }
+);
+
 const userSlice = createSlice({
   name: "user",
   initialState: userInitialState,
@@ -60,9 +76,19 @@ const userSlice = createSlice({
     [getAllUserPosts.rejected]: (state) => {
       state.posts.loading = false;
     },
+    [editUser.pending]: (state) => {
+      state.profile.loading = true;
+    },
+    [editUser.fulfilled]: (state, action) => {
+      state.profile.loading = false;
+      state.profile.data = action.payload.user;
+    },
+    [editUser.rejected]: (state) => {
+      state.profile.loading = false;
+    },
   },
 });
 
 const userReducer = userSlice.reducer;
 
-export { getAllUserPosts, getUser, userReducer };
+export { getAllUserPosts, getUser, editUser, userReducer };
