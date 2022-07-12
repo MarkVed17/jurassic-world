@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
+import { useOnClickOutside } from "../hooks/useOnClickOutside";
 
 const MobileNav = ({ setMobileNav }) => {
   const {
@@ -12,10 +13,14 @@ const MobileNav = ({ setMobileNav }) => {
       ? "flex items-center p-2 text-lg font-normal text-gray-900 rounded-lg dark:text-white bg-gray-100 dark:bg-gray-700"
       : "flex items-center p-2 text-lg font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700";
 
+  const ref = useRef();
+  useOnClickOutside(ref, () => setMobileNav(false));
+
   return (
     <nav
+      ref={ref}
       id="mobile-navigation"
-      className="fixed top-0 right-0 bottom-0 left-0 z-30"
+      className="fixed top-0 right-0 bottom-0 left-0 z-30 w-3/4"
     >
       <ul className="flex flex-col gap-4 absolute top-0 left-0 bottom-0 w-10/12 px-4 bg-white drop-shadow-2xl z-10 transition-all dark:bg-gray-800">
         <div className="flex justify-between items-center">
