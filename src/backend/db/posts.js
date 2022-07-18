@@ -640,7 +640,7 @@ export const posts = [
     _id: uuid(),
     content: "Animals raised in isolation aren't always the most functional.",
     likes: {
-      likeCount: 3,
+      likeCount: 2,
       likedBy: [
         {
           _id: uuid(),
@@ -657,14 +657,6 @@ export const posts = [
           username: "inGeneer",
           avatarURL:
             "https://pbs.twimg.com/profile_images/1491820732418035718/MqsUQxai_400x400.jpg",
-        },
-        {
-          _id: uuid(),
-          firstName: "Vedant",
-          lastName: "Lahane",
-          username: "vedantlahane",
-          avatarURL:
-            "https://pbs.twimg.com/profile_images/1413581804653617157/Lb6QIsaO_400x400.jpg",
         },
       ],
       dislikedBy: [],
