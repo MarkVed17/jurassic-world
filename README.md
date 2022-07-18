@@ -8,7 +8,7 @@ Are you a Jurassic Park fanatic and couldn't stop talking about it all day? Well
 
 ## Demo
 
-
+https://user-images.githubusercontent.com/59828215/179495624-51b0b275-2b8b-4f62-b5cd-271721c12821.mp4
 
 ## Features
 
