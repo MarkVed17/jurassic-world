@@ -19,3 +19,4 @@ export { EditCommentModal } from "./EditCommentModal";
 export { EditProfileModal } from "./EditProfileModal";
 export { FollowingUsersModal } from "./FollowingUsersModal";
 export { FollowersUsersModal } from "./FollowersUsersModal";
+export { ScrollToTop } from "./ScrollToTop";
