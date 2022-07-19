@@ -1,6 +1,6 @@
 
 # [Jurassic World](https://jurassic-world.netlify.app/) | Social-Media App for dinoheads 🦕
-Are you a Jurassic Park fanatic and couldn't stop talking about it all day? Well, Jurassic World is the place you've always desired. Join the community today & be ready to meet the most craziest dinoheads out there. 
+Are you a Jurassic Park fanatic and couldn't stop talking about it all day? Well, Jurassic World is the place you've always desired. Join the community today & be ready to meet the craziest dino-heads out there. 
 
 ## Link
 
